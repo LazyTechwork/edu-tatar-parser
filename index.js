@@ -20,11 +20,9 @@ app.get('/marks', async (req, res) => {
 		return;
 	}
 
-	res.json({
-		'user': login,
-		'marks': [4,3,3,2]
-	});
+	let student = await client.getStudent(login, password);
+
+	res.json(await student.getMarks());
 });
 
 app.listen(8000);
-
