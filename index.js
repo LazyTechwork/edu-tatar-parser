@@ -25,4 +25,5 @@ app.get('/marks', async (req, res) => {
 	res.json(await student.getMarks());
 });
 
-app.listen(8000);
+let port = process.env.PORT || 8000;
+app.listen(port);
