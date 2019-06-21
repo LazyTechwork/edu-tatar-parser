@@ -43,6 +43,7 @@ class App {
 		this.app = express();
 		this.app.use(successHandler);
 		this.makeRoutes();
+		this.app.use(express.static('public'));
 		this.app.use(errorHandler);
 	}
 
