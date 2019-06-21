@@ -26,12 +26,15 @@
 
 ## Usage
 
+### Methods
+
 Each method requires `login` and `password` query selectors. For example:
 
 `http://localhost/marks/table?login=519000000&password=123`
 
-### marks
-- `marks/table` - return student's marks table
+- `/marks/table` - return student's marks table
+- `/user/info` - return user's info
 
-### user
-- `user/info` - return user's info
+### UI
+
+You can visit `/ui.html`
