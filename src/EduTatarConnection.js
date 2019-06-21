@@ -1,4 +1,8 @@
-const request = require('./request.js');
+const {promisify} = require('util');
+
+const request = require('request');
+request.post = promisify(request.post);
+request.get = promisify(request.get);
 
 class EduTatarConnection {
     constructor({url, jar, login}) {

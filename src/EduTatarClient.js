@@ -1,4 +1,9 @@
-const request = require('./request.js');
+const {promisify} = require('util');
+
+const request = require('request');
+request.post = promisify(request.post);
+request.get = promisify(request.get);
+
 const EduTatarConnection = require("./EduTatarConnection.js");
 const StudentParser = require("./StudentParser.js");
 
@@ -8,8 +13,7 @@ class EduTatarClient {
     }
 
     async info() {
-        let {response} = await request.get(this.url);
-
+        let response = await request.get(this.url);
         return {
             url: this.url,
             status: response.statusMessage
