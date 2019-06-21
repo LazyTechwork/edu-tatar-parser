@@ -7,6 +7,8 @@ request.get = promisify(request.get);
 const EduTatarConnection = require("./EduTatarConnection.js");
 const StudentParser = require("./StudentParser.js");
 
+const {WrongCredentialsException} = require("./exceptions");
+
 class EduTatarClient {
     constructor({url}) {
         this.url = url;
@@ -22,7 +24,7 @@ class EduTatarClient {
 
     async getUserConnection(login, password) {
         let jar = request.jar();
-        await request.post({
+        let response = await request.post({
             url: "https://edu.tatar.ru/logon",
             form: {
                 "main_login": login,
@@ -35,6 +37,9 @@ class EduTatarClient {
             followAllRedirects: true,
             jar
         });
+
+        if (response.body.search("Неверный логин или пароль") != -1) 
+            throw new WrongCredentialsException;
 
         return new EduTatarConnection({
             url: this.url,
