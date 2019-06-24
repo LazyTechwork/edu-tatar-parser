@@ -17,7 +17,8 @@ function errorHandler(err, req, res, next) {
 	res.json({
 		'status': 'error',
 		'error': err.message,
-		'code': statusCode
+		'code': statusCode,
+		'stack': err.stack
 	});
 }
 
@@ -77,7 +78,11 @@ class App {
 	}
 
 	async userInfoRoute(req, res, next) {
+		let student = await this.client.getStudent(
+			req.login, req.password
+		);
 
+		res.json(await student.getInfo());
 	}
 
 	listen() {

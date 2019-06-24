@@ -30,6 +30,31 @@ class StudentParser {
 
 		return lessons;
 	}
+
+	async getInfo() {
+		let page = await this.conn.getPage("/");
+		let body = (/<table class="tableEx">([^]+)<\/table>/g).exec(page)[0];
+
+		let row_p = /<tr>([^]+?)<\/tr>/g;
+		let rows = [];
+		let row;
+
+		const fix_str = str => str.replace(/<[^>]*>?/gm, '').replace(':', '').trim();
+
+		while ((row = row_p.exec(body)) !== null) {
+			row = row[1];
+			let p = /<td[^]*?>([^]*?)<\/td>/g
+			let key = fix_str(p.exec(row)[1]);
+			let value = fix_str(p.exec(row)[1]);
+
+			if (!value)
+				continue;
+
+			rows.push({key, value});
+		}
+
+		return rows;
+	}
 }
 	
 module.exports = StudentParser;
