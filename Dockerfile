@@ -7,4 +7,4 @@ RUN npm ci --only=production
 COPY . .
 
 EXPOSE 8000
-CMD [ "npm", "start" ]
+CMD [ "node", "index.js" ]
