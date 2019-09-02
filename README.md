@@ -8,17 +8,12 @@
 
 ### Using Docker
 
-1. `docker pull pomah3/edu-tatar-parser`
-1. `docker run -d -p 8000:8000 -t pomah3/edu-tatar-parser`
-
-### Using Heroku
-
-1. fork this repo
-1. make heroku app and specify your repo in the app's settings
+1. `git clone https://github.com/pomah3/edu-tatar-parser.git`
+1. `docker build -t edu-tatar-parser .`
+1. `docker run -p 8000:8000 edu-tatar-parser`
 
 ### Manual installation
 
-1. make sure you have *nodejs* and *npm* installed
 1. `git clone https://github.com/pomah3/edu-tatar-parser.git`
 1. `cd edu-tatar-parser`
 1. `npm i`
