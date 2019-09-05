@@ -49,7 +49,8 @@ class App {
 	}
 
 	makeRoutes() {
-		this.app.get('/', this.getRoute("infoRoute"));
+		this.app.get('/', this.getRoute("uiRoute"));
+		this.app.get('/status', this.getRoute("infoRoute"));
 		this.app.get('/marks/table', checkCredentials, this.getRoute("marksTableRoute"));
 		this.app.get('/user/info', checkCredentials, this.getRoute("userInfoRoute"));
 	}
@@ -83,6 +84,10 @@ class App {
 		);
 
 		res.json(await student.getInfo());
+	}
+
+	async uiRoute(req, res, next) {
+		res.redirect("index.html");
 	}
 
 	listen() {

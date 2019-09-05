@@ -8,15 +8,14 @@
 
 ### Using Docker
 
-1. `git clone https://github.com/pomah3/edu-tatar-parser.git`
 1. `docker build -t edu-tatar-parser .`
 1. `docker run -p 8000:8000 edu-tatar-parser`
 
 ### Manual installation
 
-1. `git clone https://github.com/pomah3/edu-tatar-parser.git`
 1. `cd edu-tatar-parser`
 1. `npm i`
+1. `./node_modules/.bin/webpack-cli`
 1. `node index.js`
 
 ## Usage
@@ -27,6 +26,7 @@ Each method requires `login` and `password` query selectors. For example:
 
 `http://localhost/marks/table?login=519000000&password=123`
 
+- `/status` - return status of the service
 - `/marks/table` - return student's marks table
 - `/user/info` - return user's info
 
