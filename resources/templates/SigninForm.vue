@@ -42,7 +42,10 @@
                 }).then(response => {
                     this.$emit(
                         'auth-successful',
-                        response.data.response
+                        {
+                            marks: response.data.response,
+                            credentials: {login, password}
+                        }
                     );
                 })
                 .catch(error => {

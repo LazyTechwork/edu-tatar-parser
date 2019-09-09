@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {get_need_marks} from '../js/marks_utils';
+    import {get_need_marks} from '../js/marks';
 
     export default {
         props: ["name", "marks", "need_avg", "future_mark"],

@@ -29,7 +29,3 @@ Each method requires `login` and `password` query selectors. For example:
 - `/status` - return status of the service
 - `/marks/table` - return student's marks table
 - `/user/info` - return user's info
-
-### UI
-
-You can visit `/ui.html`
