@@ -1,3 +1,5 @@
+const _ = require("underscore");
+
 class StudentParser {
 	constructor(conn) {
 		this.conn = conn;
@@ -47,7 +49,12 @@ class StudentParser {
         let rows = [];
         let row;
 
-        const fix_str = str => str.replace(/<[^>]*>?/gm, '').replace(':', '').trim();
+        const fix_str = str => _.unescape(
+            str
+                .replace(/<[^>]*>?/gm, '')
+                .replace(':', '')
+                .trim()
+        );
 
         while ((row = row_p.exec(body)) !== null) {
             row = row[1];
