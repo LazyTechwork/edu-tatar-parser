@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 7.3
+
+services:
+  - mysql
+
+install:
+  - cp .env.travis .env
+  - mysql -e 'create database mind;'
+  - composer self-update
+  - composer install --no-interaction
+  - npm i
+  - npm run dev
+  - php artisan key:generate
+
+script:
+  - vendor/bin/phpunit
